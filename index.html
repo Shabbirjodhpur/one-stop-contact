@@ -5,9 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HTML 5 Boilerplate</title>
-    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-	<script src="index.js"></script>
+	<span>Whatsapp Number</span>
+	<input type="text" id="whatsapp" placeholder="+919999999999"/>
+	<br>
+
+	<span>Instagram</span>
+	<input type="text" id="instagram" placeholder="example_123"/>
+	<br>
+
+	<span>twitter</span>
+	<input type="text"id="twitter" placeholder="example_123"/>
+	<br>
+
+	<span>Email</span>
+	<input type="text" id="email" placeholder="example@gmail.com"/>
+	<br>
+
+	<button id="generateQr">generate QR</button>
+
+	<div class="qr-code" style="display: none;"></div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+	<script>
+		document.getElementById("generateQr").addEventListener("click",()=>{
+			var output = `https://shabbirjodhpur.github.io/one-stop-contact/contact?
+				whatsapp=${document.getElementById("whatsapp").value}
+				&instagram=${document.getElementById("instagram").value}
+				&twitter=${document.getElementById("twitter").value}
+				&email=${document.getElementById("email").value}`;
+
+			generate(output);
+		})
+		
+
+function generate(user_input){
+
+    document.querySelector(".qr-code").style = "";
+
+    var qrcode = new QRCode(document.querySelector(".qr-code"), {
+        text: `${user_input}`,
+        width: 180, //128
+        height: 180,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+
+    console.log(qrcode);
+
+    let download = document.createElement("button");
+    document.querySelector(".qr-code").appendChild(download);
+
+    let download_link = document.createElement("a");
+    download_link.setAttribute("download", "qr_code_linq.png");
+    download_link.innerText = "Download";
+
+    download.appendChild(download_link);
+
+    if(document.querySelector(".qr-code img").getAttribute("src") == null){
+        setTimeout(() => {
+            download_link.setAttribute("href", `${document.querySelector("canvas").toDataURL()}`);
+        }, 300);
+    } else {
+        setTimeout(() => {
+            download_link.setAttribute("href", `${document.querySelector(".qr-code img").getAttribute("src")}`);
+        }, 300);
+    }
+}
+
+	</script>
   </body>
 </html>
