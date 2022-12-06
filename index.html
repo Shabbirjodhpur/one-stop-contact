@@ -5,96 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>One Stop Contact</title>
+    <style>
+        #input-wrapper >div{
+                display:flex;
+                flex-dirctin:column;
+                align-items:center;
+        }
+    </style>
   </head>
   <body>
-	<h1>One Stop Contact</h1>
-	<p>Enter your details, generate a QR code and share it anywhere.</p>
-	<p>P.S. You can leave a input box blank and that detail will not be included in QR code</p>
-	<hr>
+<div style="display:flex;flex-dirctin:column;align-items:center;">
+<h1>One Stop Contact</h1>
+<img src="https://img.icons8.com/quill/50/null/experimental-contact-card-quill.png"/>
+</div>
+<p>Enter your details, generate a QR code and share it anywhere.</p>
+<p>P.S. You can leave a input box blank and that detail will not be included in QR code</p>
+<hr>
 <div id="input-wrapper">
-	<div>
-		<span>name</span>
-		<input type="text" id="name" placeholder="example example"/>
-	</div>
-	<div>
-		<span>whatsapp</span>
-		<input type="text" id="whatsapp" placeholder="+919999999999"/>
-		<span>(optional)</span>
-	</div>
-
-	<div>
-		<span>instagram</span>
-		<input type="text" id="instagram" placeholder="example_123"/>
-		<span>(optional)</span>
-	</div>
-
-	<div>
-		<span>twitter</span>
-		<input type="text"id="twitter" placeholder="example_123"/>
-		<span>(optional)</span>
-	</div>
-
-	<div>
-		<span>linkedin</span>
-		<input type="text" id="linkedin" placeholder="example_example"/>
-		<span>(optional)</span>
-	</div>
-	<div>
-		<span>email</span>
-		<input type="text" id="email" placeholder="example@gmail.com"/>
-		<span>(optional)</span>
-	</div>
-	<div>
-		<span>website</span>
-		<input type="text" id="website" placeholder="example.com"/>
-		<span>(optional)</span>
-	</div>
+<div>
+<img src="https://img.icons8.com/color/48/null/business-contact.png"/>
+<input type="text" id="name" placeholder="example example"/>
+<span>(name)</span>
+</div>
+<div>
+<img src="https://img.icons8.com/color/48/null/whatsapp--v1.png"/>
+<input type="text" id="whatsapp" placeholder="+919999999999"/>
+<span>(optional)</span>
 </div>
 
-	<div>
-		<button id="generateQr">generate QR</button>
-		<button id="download" onclick="downloadQR()" style="visibility:hidden">Download Qr</button>
-	</div>
+<div>
+<img src="https://img.icons8.com/fluency/48/null/instagram-new.png"/>
+<input type="text" id="instagram" placeholder="example_123"/>
+<span>(optional)</span>
+</div>
 
-	<canvas id="qrcode"></canvas>
+<div>
+<img src="https://img.icons8.com/color/48/null/twitter--v1.png"/>
+<input type="text"id="twitter" placeholder="example_123"/>
+<span>(optional)</span>
+</div>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-	<script>
+<div>
+<img src="https://img.icons8.com/color/48/null/linkedin-circled--v1.png"/>
+<input type="text" id="linkedin" placeholder="example_example"/>
+<span>(optional)</span>
+</div>
+<div>
+<img src="https://img.icons8.com/color/48/null/circled-envelope.png"/>
+<input type="text" id="email" placeholder="example@gmail.com"/>
+<span>(optional)</span>
+</div>
+<div>
+<img src="https://img.icons8.com/fluency/48/null/internet.png"/>
+<input type="text" id="website" placeholder="example.com"/>
+<span>(optional)</span>
+</div>
+</div>
 
-		function makeQR(your_data){
-			let qrcodeContainer = document.getElementById("qrcode");
-			qrcodeContainer.innerHTML = "";
-			new QRious({
-				element: qrcodeContainer,
-				value: your_data,
-				size: 600,
-				padding:50,
-			}); // generate QR code in canvas
-			//downloadQR();
-			document.getElementById("download").style="block";
-		}
+<div>
+<button id="generateQr">generate QR</button>
+<button id="download" onclick="downloadQR()" style="visibility:hidden">Download Qr</button>
+</div>
 
-		function downloadQR() {
-			var link = document.createElement('a');
-			link.download = 'filename.png';
-			link.href = document.getElementById('qrcode').toDataURL()
-			link.click();
-		} 
+<canvas id="qrcode"></canvas>
 
-		document.getElementById("generateQr").addEventListener("click",()=>{
-			var output = `https://shabbirjodhpur.github.io/one-stop-contact/contact?
-				name=${encodeURIComponent(document.getElementById("name").value)}
-				&whatsapp=${encodeURIComponent(document.getElementById("whatsapp").value)}
-				&instagram=${encodeURIComponent(document.getElementById("instagram").value)}
-				&twitter=${encodeURIComponent(document.getElementById("twitter").value)}
-				&linkedin=${encodeURIComponent(document.getElementById("linkedin").value)}
-				&email=${encodeURIComponent(document.getElementById("email").value)}
-				&website=${encodeURIComponent(document.getElementById("website").value)}`;
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+<script>
 
-			makeQR(output);
-			console.log(output)
-		})
+function makeQR(your_data){
+let qrcodeContainer = document.getElementById("qrcode");
+qrcodeContainer.innerHTML = "";
+new QRious({
+element: qrcodeContainer,
+value: your_data,
+size: 600,
+padding:50,
+}); // generate QR code in canvas
+//downloadQR();
+document.getElementById("download").style="block";
+}
 
-	</script>
+function downloadQR() {
+var link = document.createElement('a');
+link.download = 'filename.png';
+link.href = document.getElementById('qrcode').toDataURL()
+link.click();
+}
+
+document.getElementById("generateQr").addEventListener("click",()=>{
+var output = `https://shabbirjodhpur.github.io/one-stop-contact/contact?
+name=${encodeURIComponent(document.getElementById("name").value)}
+&whatsapp=${encodeURIComponent(document.getElementById("whatsapp").value)}
+&instagram=${encodeURIComponent(document.getElementById("instagram").value)}
+&twitter=${encodeURIComponent(document.getElementById("twitter").value)}
+&linkedin=${encodeURIComponent(document.getElementById("linkedin").value)}
+&email=${encodeURIComponent(document.getElementById("email").value)}
+&website=${encodeURIComponent(document.getElementById("website").value)}`;
+
+makeQR(output);
+console.log(output)
+})
+
+</script>
   </body>
 </html>
