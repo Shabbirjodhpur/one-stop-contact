@@ -63,7 +63,7 @@
 
 <div>
 <button style="padding:16px;background-color:blue;color:white;border-radius:16px;" id="generateQr">generate QR</button>
-<button style="padding:16px;background-color:blue;color:white;border-radius:16px;visibility:hidden;" id="download" onclick="downloadQR()">Download Qr</button>
+<button style="padding:16px;background-color:blue;color:white;border-radius:16px;display:none;" id="download" onclick="downloadQR()">Download Qr</button>
 </div>
 
 <canvas id="qrcode"></canvas>
@@ -81,7 +81,7 @@ size: 600,
 padding:50,
 }); // generate QR code in canvas
 //downloadQR();
-document.getElementById("download").style="padding:16px;background-color:blue;color:white;border-radius:16px;visibility:block;";
+document.getElementById("download").style="padding:16px;background-color:blue;color:white;border-radius:16px;display:block;";
 }
 
 function downloadQR() {
