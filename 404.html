@@ -7,27 +7,24 @@
     <title>HTML 5 Boilerplate</title>
   </head>
   <body>
-	<span>Whatsapp Number:</span>
-	<span id="whatsapp"></span>
-	<br>
-
-	<span>Instagram:</span>
-	<span id="instagram"></span>
-	<br>
-
-	<span>twitter:</span>
-	<span id="twitter"></span>
-	<br>
-
-	<span>Email:</span>
-	<span id="email"></span>
-	<br>
+	<div id="output"></div>
   </body>
 <script>
 	var input = window.location.href;
-	document.getElementById("whatsapp").innerHTML = input.split("=")[1].split("&")[0];
-	document.getElementById("instagram").innerHTML = input.split("=")[2].split("&")[0];
-	document.getElementById("twitter").innerHTML = input.split("=")[3].split("&")[0];
-	document.getElementById("email").innerHTML = input.split("=")[4].split("&")[0];
+	var inputFields = input.split("?")[1].split("&");
+
+	for(let i=0;i<inputFields.length;i++){
+		var span_key = document.createElement('span');
+		span_key.innerHTML = `${inputFields[i].split("=")[0]}: `;
+
+		var span_value = document.createElement('span');
+		span_value.innerHTML = decodeURIComponent(inputFields[i].split("=")[1]);
+
+		var div = document.createElement('div');
+		div.appendChild(span_key);
+		div.appendChild(span_value);
+
+		document.getElementById('output').appendChild(div)
+	}
 </script>
 </html>
