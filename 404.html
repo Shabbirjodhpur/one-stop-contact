@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
+    <title>One Stop Contact</title>
 <style>
  #output > div{
 padding:12px;
@@ -12,24 +12,32 @@ padding:12px;
 </style>
   </head>
   <body>
-	<div id="output" style="background-color: whitesmoke;border-radius: 16px;border: 1px solid;width: 450px;"></div>
+  <div style="display:flex;background-color: whitesmoke;border-radius: 16px;border: 1px solid;max-width:500px;">
+        <img src="https://img.icons8.com/ios-glyphs/240/null/user-male--v1.png"/>
+<div id="output"></div>
+</div>
   </body>
+  <a href="https://shabbirjodhpur.github.io/one-stop-contact/" >
+  <button style="padding:16px;background-color:blue;color:white;border-radius:16px;">
+  Get your own contact card
+  </button>
+  </a>
 <script>
-	var input = window.location.href;
-	var inputFields = input.split("?")[1].split("&");
+var input = window.location.href;
+var inputFields = input.split("?")[1].split("&");
 
-	for(let i=0;i<inputFields.length;i++){
-		var span_key = document.createElement('span');
-		span_key.innerHTML = `${inputFields[i].split("=")[0]}: `;
+for(let i=0;i<inputFields.length;i++){
+var span_key = document.createElement('span');
+span_key.innerHTML = `${inputFields[i].split("=")[0]}: `;
 
-		var span_value = document.createElement('span');
-		span_value.innerHTML = decodeURIComponent(inputFields[i].split("=")[1]);
+var span_value = document.createElement('span');
+span_value.innerHTML = decodeURIComponent(inputFields[i].split("=")[1]);
 
-		var div = document.createElement('div');
-		div.appendChild(span_key);
-		div.appendChild(span_value);
+var div = document.createElement('div');
+div.appendChild(span_key);
+div.appendChild(span_value);
 
-		document.getElementById('output').appendChild(div)
-	}
+document.getElementById('output').appendChild(div)
+}
 </script>
 </html>
