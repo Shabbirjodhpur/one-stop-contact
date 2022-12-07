@@ -43,15 +43,7 @@
                         <button style="padding:16px;background-color:blue;color:white;border-radius:16px;"> Get your own contact card </button>
                 </a>
                 <script>
-			var input = `https://shabbirjodhpur.github.io/one-stop-contact/contact?
-name=
-&whatsapp=
-&instagram=
-&twitter=
-&linkedin=
-&email=
-&website=`
-                        //var input = window.location.href;
+		        var input = window.location.href;
                         var inputFields = input.split("?")[1].split("&");
                         for (let i = 0; i < inputFields.length; i++) {
                                 var span_key = document.createElement('span');
