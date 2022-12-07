@@ -25,6 +25,22 @@
 				max-width: 250px;
 				align-self: center;
 			}
+			.blue-button{
+				padding:16px;
+				background-color:blue;
+				color:white;
+				border-radius:16px;
+				border:0px;
+				    box-shadow: 5px 8px 6px lightblue;
+			}
+			#contact-wrapper{
+				margin-bottom:16px;
+			}
+			#button-wrapper{
+				max-width: 750px;
+				display: flex;
+				justify-content: space-around;
+			}
 			@media only screen and (max-width:750px){
 				#contact-wrapper{
 					flex-direction:column;
@@ -41,10 +57,10 @@
                         <img id="user" src="https://img.icons8.com/ios-glyphs/240/null/user-male--v1.png" />
                         <div id="output"></div>
                 </div>
-		<div>	
-			<button id="download" style="padding:16px;background-color:blue;color:white;border-radius:16px;"> Save this info </button>
+		<div id="button-wrapper">	
+			<button id="download" class="blue-button"> Save this info </button>
                 	<a href="https://shabbirjodhpur.github.io/one-stop-contact/">
-                        	<button style="padding:16px;background-color:blue;color:white;border-radius:16px;"> Get your own contact card </button>
+                        	<button class="blue-button"> Get your own contact card </button>
                 	</a>
 		</div>
 		
