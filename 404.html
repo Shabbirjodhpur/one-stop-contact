@@ -41,10 +41,17 @@
                         <img id="user" src="https://img.icons8.com/ios-glyphs/240/null/user-male--v1.png" />
                         <div id="output"></div>
                 </div>
-                <a href="https://shabbirjodhpur.github.io/one-stop-contact/">
-                        <button style="padding:16px;background-color:blue;color:white;border-radius:16px;"> Get your own contact card </button>
-                </a>
+		<div>	
+			<button id="download" style="padding:16px;background-color:blue;color:white;border-radius:16px;"> Save this info </button>
+                	<a href="https://shabbirjodhpur.github.io/one-stop-contact/">
+                        	<button style="padding:16px;background-color:blue;color:white;border-radius:16px;"> Get your own contact card </button>
+                	</a>
+		</div>
+		
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
                 <script>
+			//var input=`s?whatsapp=8686`
 		        var input = window.location.href;
                         var inputFields = input.split("?")[1].split("&");
                         for (let i = 0; i < inputFields.length; i++) {
@@ -77,6 +84,20 @@
 					output.childNodes[i].childNodes[0].innerHTML = `<img src="https://img.icons8.com/fluency/48/null/internet.png">`
 				}
 			}
+
+			document.getElementById('download').addEventListener("click", () => {
+				var node = document.getElementById('contact-wrapper');
+
+				domtoimage.toPng(node).then(function(dataUrl) {
+					var link = document.createElement('a');
+					link.download = 'Info.png';
+					link.href = dataUrl;
+					link.click();
+				}).catch(function(error) {
+					console.error('oops, something went wrong!', error);
+				});
+			})
+
                 </script>
         </body>
 </html>
