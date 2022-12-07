@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>One Stop Contact</title>
+                <style>
+                        #output>div {
+                                padding: 0px;
+                        }
+			#contact-wrapper{
+				display:flex;
+				flex-direction:row;
+				background-color:whitesmoke;
+				border-radius:16px;
+				border: 1px solid;
+				padding:16px;
+				max-width:700px;
+			}
+			#user{
+				width: 40vw;
+				max-width: 250px;
+				align-self: center;
+			}
+			@media only screen and (max-width:750px){
+				#contact-wrapper{
+					flex-direction:column;
+				}
+			}
+                </style>
+        </head>
+        <body>
+                <div style="display:flex;align-items:center;">
+                        <h1>One Stop Contact</h1>
+                        <img src="https://img.icons8.com/quill/50/null/experimental-contact-card-quill.png" />
+                </div>
+                <div id="contact-wrapper">
+                        <img id="user" src="https://img.icons8.com/ios-glyphs/240/null/user-male--v1.png" />
+                        <div id="output"></div>
+                </div>
+                <a href="https://shabbirjodhpur.github.io/one-stop-contact/">
+                        <button style="padding:16px;background-color:blue;color:white;border-radius:16px;"> Get your own contact card </button>
+                </a>
+                <script>
+			var input = `https://shabbirjodhpur.github.io/one-stop-contact/contact?
+name=
+&whatsapp=
+&instagram=
+&twitter=
+&linkedin=
+&email=
+&website=`
+                        //var input = window.location.href;
+                        var inputFields = input.split("?")[1].split("&");
+                        for (let i = 0; i < inputFields.length; i++) {
+                                var span_key = document.createElement('span');
+                                span_key.innerHTML = `${inputFields[i].split("=")[0]}: `;
+                                var span_value = document.createElement('span');
+                                span_value.innerHTML = decodeURIComponent(inputFields[i].split("=")[1]);
+                                var div = document.createElement('div');
+                                div.appendChild(span_key);
+                                div.appendChild(span_value);
+                                document.getElementById('output').appendChild(div)
+                        }
+
+			var output = document.getElementById("output")
+			for(let i=0;i<output.childElementCount;i++){
+				var s = output.childNodes[i].childNodes[0].innerHTML
+				if(s.includes('name')){
+					output.childNodes[i].childNodes[0].innerHTML = `<img src="https://img.icons8.com/color/48/null/business-contact.png">`
+				} else if(s.includes('whatsapp')){
+					output.childNodes[i].childNodes[0].innerHTML = `<img src="https://img.icons8.com/color/48/null/whatsapp--v1.png">`
+				} else if(s.includes('instagram')){
+					output.childNodes[i].childNodes[0].innerHTML = `<img src="https://img.icons8.com/fluency/48/null/instagram-new.png">`
+				} else if(s.includes('twitter')){
+					output.childNodes[i].childNodes[0].innerHTML = `<img src="https://img.icons8.com/color/48/null/twitter--v1.png">`
+				} else if(s.includes('linkedin')){
+					output.childNodes[i].childNodes[0].innerHTML = `<img src="https://img.icons8.com/color/48/null/linkedin-circled--v1.png">`
+				} else if(s.includes('email')){
+					output.childNodes[i].childNodes[0].innerHTML = `<img src="https://img.icons8.com/color/48/null/circled-envelope.png">`
+				} else if(s.includes('website')){
+					output.childNodes[i].childNodes[0].innerHTML = `<img src="https://img.icons8.com/fluency/48/null/internet.png">`
+				}
+			}
+                </script>
+        </body>
+</html>
